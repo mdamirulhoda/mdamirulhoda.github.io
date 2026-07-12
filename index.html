@@ -1,89 +1,142 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <title>SECURE TERMINAL | Md Amirul Hoda {পলাশ}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body { margin: 0; background: #050505; color: #00FF88; font-family: 'Courier New', monospace; text-align: center; overflow-x: hidden; }
-        #bg-photo { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('My Photo JPG.png') no-repeat center center fixed; background-size: cover; opacity: 0.3; z-index: -1; }
-        #matrix { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.2; }
-        
-        #startOverlay { position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-        #overlay { position: relative; z-index: 1; padding: 20px; display: none; }
+<meta charset="UTF-8">
+<title>SECURE TERMINAL | Md Amirul Hoda {পলাশ}</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+body { margin: 0; background: url('My Photo JPG.png') no-repeat center center fixed; background-size: cover; color: #0f0; font-family: 'Courier New', monospace; text-align: center; }
+#overlay { background: rgba(0, 0, 0, 0.5); min-height: 100vh; padding: 20px; display: none; position: relative; }
 
-        .welcome-header { font-size: 2rem; color: #fff; margin-top: 20px; text-transform: uppercase; letter-spacing: 2px; }
-        .name-highlight { font-size: 3.5rem; color: #00FF88; text-shadow: 0 0 15px #00FF88, 0 0 30px #00FF88; margin-bottom: 20px; animation: glitch 1s infinite; }
-        @keyframes glitch { 0% { text-shadow: 2px 0 #FF3B3B; } 50% { text-shadow: -2px 0 #00E5FF; } 100% { text-shadow: 2px 0 #FF3B3B; } }
+.welcome-header { font-size: 2rem; color: #fff; margin-top: 20px; text-transform: uppercase; letter-spacing: 2px; }
+.name-highlight { font-size: 3.5rem; color: #0f0; text-shadow: 0 0 15px #0f0, 0 0 30px #0f0; margin-bottom: 30px; }
 
-        .as-badge { position: absolute; top: 15px; right: 25px; font-size: 2rem; color: #00FF88; border: 2px solid #00FF88; padding: 5px 15px; background: rgba(0,0,0,0.5); }
-        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; }
-        .card { border: 1px solid #00FF88; padding: 12px; color: #00FF88; text-decoration: none; background: rgba(0,0,0,0.6); transition: 0.3s; }
-        .card:hover { background: #00FF88; color: #000; box-shadow: 0 0 15px #00FF88; }
+/* A§S স্টাইল */
+.as-badge { position: absolute; top: 15px; right: 25px; font-size: 2.2rem; color: #0f0; text-shadow: 0 0 10px #0f0; font-weight: bold; border: 2px solid #0f0; padding: 5px 15px; background: rgba(0,0,0,0.5); }
 
-        .skills { max-width: 400px; margin: 20px auto; text-align: left; }
-        .bar { background: #333; height: 8px; margin-bottom: 10px; }
-        .fill { background: #00FF88; height: 100%; }
-        footer { margin-top: 20px; font-size: 0.8rem; color: #00E5FF; }
-    </style>
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; }
+.card { border: 2px solid #0f0; padding: 12px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.6); transition: 0.3s; font-size: 0.85rem; }
+.card:hover { background: #0f0; color: #000; box-shadow: 0 0 15px #0f0; }
+</style>
 </head>
 <body>
 
-    <div id="bg-photo"></div>
-    <canvas id="matrix"></canvas>
+<!-- নাম নেওয়ার ইন্টারফেস -->
+<div id="startOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+<h1 style="color:#0f0;">INITIALIZE SYSTEM</h1>
+<input type="text" id="userName" placeholder="ENTER YOUR NAME" style="background:transparent; border:1px solid #0f0; color:#0f0; padding:10px; text-align:center; width:250px;">
+<button onclick="start()" style="margin-top:20px; background:#0f0; border:none; padding:10px 20px; cursor:pointer; font-weight:bold;">ACCESS TERMINAL</button>
+</div>
 
-    <div id="startOverlay">
-        <h1 id="typewriter" style="color:#00FF88;"></h1>
-        <input type="text" id="userName" placeholder="ENTER YOUR NAME" style="background:transparent; border:1px solid #00FF88; color:#00FF88; padding:10px; text-align:center; width:250px;">
-        <button onclick="start()" style="margin-top:20px; background:#00FF88; border:none; padding:10px 20px; cursor:pointer; font-weight:bold;">ACCESS TERMINAL</button>
-    </div>
+<!-- মূল কন্টেন্ট -->
+<div id="overlay">
+<!-- A § S ব্যাজ -->
+<div class="as-badge">A § S</div>
 
-    <div id="overlay">
-        <div class="as-badge">A § S</div>
-        <div class="welcome-header">WELCOME</div>
-        <div class="name-highlight">Md Amirul Hoda {পলাশ}</div>
-        
-        <div class="grid">
-            <a href="https://www.linkedin.com/in/mohammed-amirul-islam-720119401" class="card"><i class="fab fa-linkedin"></i><br>LinkedIn</a>
-            <a href="https://www.upwork.com/freelancers/~012072c3d002cb852a" class="card"><i class="fab fa-upwork"></i><br>Upwork</a>
-            <a href="https://www.fiverr.com/s/ljqoXVQ" class="card"><i class="fab fa-fiverr"></i><br>Fiverr</a>
-            <a href="https://x.com/mdamirulhoda" class="card"><i class="fab fa-twitter"></i><br>Twitter</a>
-            <a href="#" class="card">📡 Net Scan</a><a href="#" class="card">🔐 Pass Gen</a><a href="#" class="card">🕵️ IP Track</a>
-            <a href="#" class="card">💻 Proxy</a><a href="#" class="card">🛠️ Exploit</a><a href="#" class="card">🛡️ Firewall</a>
-        </div>
+<div class="welcome-header">WELCOME</div>
+<div class="name-highlight">Md Amirul Hoda {পলাশ}</div>
 
-        <div class="skills">
-            <div>Python <div class="bar"><div class="fill" style="width:95%"></div></div></div>
-            <div>AI Specialist <div class="bar"><div class="fill" style="width:90%"></div></div></div>
-            <div>Ethical Hacking <div class="bar"><div class="fill" style="width:85%"></div></div></div>
-        </div>
-        <footer>> System Status : ONLINE | Security Level : MAXIMUM | © 2026 Md Amirul</footer>
-    </div>
+<div class="grid">
+<a href="https://www.linkedin.com/in/mohammed-amirul-islam-720119401" class="card"><i class="fab fa-linkedin"></i><br>LinkedIn</a>
+<a href="https://www.upwork.com/freelancers/~012072c3d002cb852a" class="card"><i class="fab fa-upwork"></i><br>Upwork</a>
+<a href="https://www.fiverr.com/s/ljqoXVQ" class="card"><i class="fab fa-fiverr"></i><br>Fiverr</a>
+<a href="https://x.com/mdamirulhoda" class="card"><i class="fab fa-twitter"></i><br>Twitter</a>
 
-    <audio id="hackerAudio" loop><source src="Binary Code - Interface Sound Effects _ Sci-Fi Computer Beeps _ Data Processing Sounds(MP3_70K).mp3" type="audio/mpeg"></audio>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<title>SECURE TERMINAL | Md Amirul</title>
+<style>
+body { margin: 0; background: #050505; color: #00FF88; font-family: 'Courier New', monospace; overflow-x: hidden; }
+#bg-photo { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('My Photo JPG.png') no-repeat center center; background-size: cover; z-index: -1; opacity: 0.5; }
+#matrix { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.15; }
+#content { position: relative; z-index: 1; padding: 20px; text-align: center; }
 
-    <script>
-        let txt = "ACCESSING SECURE TERMINAL..."; let i = 0;
-        function type() { if(i < txt.length) { document.getElementById('typewriter').innerHTML += txt.charAt(i); i++; setTimeout(type, 100); } }
-        type();
+.glitch { animation: glitch-anim 2s infinite; color: #00FF88; text-shadow: 2px 0 #FF3B3B, -2px 0 #00E5FF; }
+@keyframes glitch-anim { 0% { opacity: 1; } 50% { opacity: 0.8; } 100% { opacity: 1; } }
 
-        function start() {
-            if(document.getElementById('userName').value.trim() !== "") {
-                document.getElementById('startOverlay').style.display = 'none';
-                document.getElementById('overlay').style.display = 'block';
-                document.getElementById('hackerAudio').play();
-            }
-        }
+.terminal { background: rgba(0,0,0,0.7); border: 1px solid #00FF88; padding: 15px; max-width: 500px; margin: 20px auto; text-align: left; font-size: 0.8rem; }
 
-        let c = document.getElementById("matrix"), ctx = c.getContext("2d");
-        c.height = window.innerHeight; c.width = window.innerWidth;
-        let drops = Array(Math.floor(c.width/15)).fill(1);
-        function draw() {
-            ctx.fillStyle = "rgba(0,0,0,0.05)"; ctx.fillRect(0,0,c.width,c.height);
-            ctx.fillStyle = "#00FF88";
-            drops.map((y, i) => { ctx.fillText("01", i*15, y*15); drops[i] = y*15 > c.height ? 0 : y+1; });
-        }
-        setInterval(draw, 60);
-    </script>
+.skill-container { max-width: 400px; margin: 20px auto; text-align: left; }
+.bar { background: #333; height: 8px; margin-bottom: 10px; }
+.fill { background: #00FF88; height: 100%; }
+
+footer { position: fixed; bottom: 10px; width: 100%; font-size: 0.7rem; color: #00E5FF; }
+</style>
+</head>
+<body>
+
+<div id="bg-photo"></div>
+<canvas id="matrix"></canvas>
+
+<div id="content">
+<h1 id="typewriter"></h1>
+<div class="terminal" id="term-box">root@system:~$` Initializing...</div>
+
+<div class="skill-container">
+<div>Python <div class="bar"><div class="fill" style="width:95%"></div></div></div>
+<div>Ethical Hacking <div class="bar"><div class="fill" style="width:85%"></div></div></div>
+<div>AI Specialist <div class="bar"><div class="fill" style="width:90%"></div></div></div>
+</div>
+</div>
+
+<footer>
+> System Status : ONLINE | Security Level : MAXIMUM | © 2026 Md Amirul
+</footer>
+
+<script>
+// Typing Animation
+let txt = "ACCESSING SECURE TERMINAL...";
+let i = 0;
+function type() { if(i < txt.length) { document.getElementById('typewriter').innerHTML += txt.charAt(i); i++; setTimeout(type, 100); } }
+type();
+
+// Terminal Update
+setTimeout(() => { document.getElementById('term-box').innerHTML += "<br>root@system:~`$ Loading modules...<br>root@system:~$ Access Granted ✓"; }, 3500);
+
+// Matrix Rain
+let c = document.getElementById("matrix"), ctx = c.getContext("2d");
+c.height = window.innerHeight; c.width = window.innerWidth;
+let drops = Array(Math.floor(c.width/15)).fill(1);
+function draw() {
+ctx.fillStyle = "rgba(0,0,0,0.05)"; ctx.fillRect(0,0,c.width,c.height);
+ctx.fillStyle = "#00FF88";
+drops.map((y, i) => { ctx.fillText("01", i15, y15); drops[i] = y*15 > c.height ? 0 : y+1; });
+}
+setInterval(draw, 60);
+</script>
 </body>
 </html>
+<a href="#" class="card">📡 Net Scan</a><a href="#" class="card">🔐 Pass Gen</a><a href="#" class="card">🕵️ IP Track</a>
+<a href="#" class="card">💻 Proxy</a><a href="#" class="card">🛠️ Exploit</a><a href="#" class="card">🛡️ Firewall</a>
+<a href="#" class="card">🧬 Hash</a><a href="#" class="card">📂 Encrypt</a><a href="#" class="card">🌐 DNS</a>
+<a href="#" class="card">📱 Phish</a><a href="#" class="card">⚡ DDoS</a><a href="#" class="card">📁 SQL</a>
+<a href="#" class="card">🖥️ SSH</a><a href="#" class="card">🔍 Port</a><a href="#" class="card">🔑 SSL</a>
+<a href="#" class="card">🎭 Spoof</a><a href="#" class="card">📡 Wi-Fi</a><a href="#" class="card">🖱️ Keylog</a>
+<a href="#" class="card">🛰️ Geo</a><a href="#" class="card">📉 Packet</a><a href="#" class="card">🛡️ Anti</a>
+<a href="#" class="card">💻 VM</a><a href="#" class="card">⚡ Malware</a><a href="#" class="card">🔍 Audit</a>
+<a href="#" class="card">📁 Backdoor</a>
+</div>
+</div>
+
+<audio id="hackerAudio" loop>
+<source src="Binary Code - Interface Sound Effects _ Sci-Fi Computer Beeps _ Data Processing Sounds(MP3_70K).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function start() {
+let name = document.getElementById('userName').value;
+if(name.trim() !== "") {
+document.getElementById('startOverlay').style.display = 'none';
+document.getElementById('overlay').style.display = 'block';
+document.getElementById('hackerAudio').play();
+}
+}
+</script>
+</body>
+</html>
+
+
+    
