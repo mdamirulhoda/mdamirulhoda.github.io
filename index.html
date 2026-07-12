@@ -1,88 +1,72 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <title>SECURE TERMINAL | Md Amirul Hoda {পলাশ}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body { margin: 0; background: #050505; color: #00FF88; font-family: 'Courier New', monospace; overflow: hidden; }
-        #bg-img { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('My Photo JPG.png') no-repeat center center; background-size: cover; opacity: 0.4; z-index: -1; }
-        #matrix { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.2; }
-        #overlay { position: relative; z-index: 1; padding: 20px; display: none; text-align: center; }
-        
-        .terminal-box { background: rgba(0,0,0,0.8); border: 1px solid #00FF88; padding: 15px; max-width: 600px; margin: 0 auto 20px; text-align: left; font-size: 0.9rem; }
-        .glitch { animation: glitch 1s linear infinite; }
-        @keyframes glitch { 0% { text-shadow: 2px 0 #FF3B3B; } 50% { text-shadow: -2px 0 #00E5FF; } 100% { text-shadow: 2px 0 #FF3B3B; } }
-        
-        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; }
-        .card { border: 1px solid #00FF88; padding: 10px; color: #00FF88; text-decoration: none; background: rgba(0,0,0,0.6); transition: 0.3s; }
-        .card:hover { background: #00FF88; color: #000; }
-        
-        .skills { max-width: 500px; margin: 20px auto; text-align: left; }
-        .bar-bg { background: #333; height: 10px; margin-bottom: 10px; }
-        .bar-fill { background: #00FF88; height: 100%; }
-        
-        .footer { position: fixed; bottom: 10px; width: 100%; font-size: 0.8rem; color: #00E5FF; }
-    </style>
+<meta charset="UTF-8">
+<title>SECURE TERMINAL | Md Amirul Hoda {পলাশ}</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+body { margin: 0; background: #000; color: #0f0; font-family: 'Courier New', monospace; overflow: hidden; }
+#bg-img { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('My Photo JPG.png') no-repeat center center; background-size: cover; opacity: 0.3; z-index: -1; }
+#overlay { padding: 20px; text-align: center; display: none; }
+
+.as-badge { position: absolute; top: 15px; right: 25px; font-size: 1.5rem; color: #0f0; border: 1px solid #0f0; padding: 5px 15px; }
+.name-highlight { font-size: 2.5rem; color: #0f0; text-shadow: 0 0 10px #0f0; margin: 10px 0; }
+
+.terminal-box { border: 1px solid #0f0; padding: 10px; max-width: 600px; margin: 10px auto; text-align: left; font-size: 0.8rem; background: rgba(0,0,0,0.6); }
+
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; max-width: 900px; margin: 20px auto; }
+.card { border: 1px solid #0f0; padding: 10px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.6); font-size: 0.75rem; transition: 0.3s; }
+.card:hover { background: #0f0; color: #000; }
+
+.skills { max-width: 500px; margin: 15px auto; text-align: left; }
+.bar-bg { background: #111; height: 8px; margin-bottom: 8px; border: 1px solid #0f0; }
+.bar-fill { background: #0f0; height: 100%; }
+
+.footer { position: fixed; bottom: 5px; width: 100%; font-size: 0.7rem; color: #0f0; }
+</style>
 </head>
 <body>
 
-    <div id="bg-img"></div>
-    <canvas id="matrix"></canvas>
+<div id="bg-img"></div>
 
-    <div id="startOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-        <h1 id="typewriter" style="color:#00FF88;"></h1>
-        <input type="text" id="userName" placeholder="ENTER NAME" style="background:transparent; border:1px solid #00FF88; color:#00FF88; padding:10px; text-align:center;">
-        <button onclick="start()" style="margin-top:20px; background:#00FF88; border:none; padding:10px 20px; cursor:pointer;">ACCESS</button>
-    </div>
+<div id="startOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+<h1 style="color:#0f0;">INITIALIZE SYSTEM</h1>
+<button onclick="start()" style="background:transparent; border:1px solid #0f0; color:#0f0; padding:10px 20px; cursor:pointer;">ACCESS TERMINAL</button>
+</div>
 
-    <div id="overlay">
-        <div class="glitch" style="font-size: 2.5rem; margin-top: 20px;">Md Amirul Hoda {পলাশ}</div>
-        <div class="terminal-box" id="terminal"></div>
-        
-        <div class="grid">
-            <a href="#" class="card">📡 Net Scan</a><a href="#" class="card">🔐 Pass Gen</a><a href="#" class="card">🕵️ IP Track</a>
-            <a href="#" class="card">💻 Proxy</a><a href="#" class="card">🛠️ Exploit</a><a href="#" class="card">🛡️ Firewall</a>
-        </div>
+<div id="overlay">
+<div class="as-badge">A § S</div>
+<div class="name-highlight">Md Amirul Hoda {পলাশ}</div>
+<div class="terminal-box">
+root@system:~  Loading modules...<br>
+root@system:~$ Access Granted ✓
+</div>
 
-        <div class="skills">
-            <div>Python <div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div></div>
-            <div>AI Specialist <div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></div>
-            <div>Ethical Hacking <div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
-        </div>
-    </div>
+<div class="grid">
+<!-- সোশ্যাল লিংক -->
+<a href="https://www.linkedin.com/in/mohammed-amirul-islam-720119401" class="card"><i class="fab fa-linkedin"></i><br>LinkedIn</a>
+<a href="https://www.upwork.com/freelancers/~012072c3d002cb852a" class="card"><i class="fab fa-upwork"></i><br>Upwork</a>
+<a href="https://www.fiverr.com/s/ljqoXVQ" class="card"><i class="fab fa-fiverr"></i><br>Fiverr</a>
+<a href="https://x.com/mdamirulhoda" class="card"><i class="fab fa-twitter"></i><br>Twitter</a>
+<!-- টুলস -->
+<a href="#" class="card">📡 Net Scan</a><a href="#" class="card">🔐 Pass Gen</a><a href="#" class="card">🕵️ IP Track</a><a href="#" class="card">💻 Proxy</a>
+<a href="#" class="card">🛠️ Exploit</a><a href="#" class="card">🛡️ Firewall</a><a href="#" class="card">🧬 Hash</a><a href="#" class="card">📂 Encrypt</a>
+</div>
 
-    <div class="footer">> System: ONLINE | Security: MAXIMUM | © 2026 Md Amirul</div>
+<div class="skills">
+<div>Python <div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div></div>
+<div>AI Specialist <div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></div>
+<div>Ethical Hacking <div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
+</div>
+</div>
 
-    <audio id="hackerAudio" loop><source src="Binary Code - Interface Sound Effects _ Sci-Fi Computer Beeps _ Data Processing Sounds(MP3_70K).mp3" type="audio/mpeg"></audio>
+<div class="footer">> System: ONLINE | Security: MAXIMUM | © 2026 Md Amirul</div>
 
-    <script>
-        // Typewriter Effect
-        let text = "ACCESSING SECURE TERMINAL...";
-        let i = 0;
-        function type() { if(i < text.length) { document.getElementById('typewriter').innerHTML += text.charAt(i); i++; setTimeout(type, 100); } }
-        type();
-
-        function start() {
-            let name = document.getElementById('userName').value;
-            if(name.trim() !== "") {
-                document.getElementById('startOverlay').style.display = 'none';
-                document.getElementById('overlay').style.display = 'block';
-                document.getElementById('terminal').innerHTML = `root@system:~$ Initializing...<br>root@system:~$ Loading modules...<br>root@system:~$ Access Granted for ${name.toUpperCase()} ✓`;
-                document.getElementById('hackerAudio').play();
-            }
-        }
-
-        // Matrix
-        let c = document.getElementById("matrix"), ctx = c.getContext("2d");
-        c.height = window.innerHeight; c.width = window.innerWidth;
-        let drops = Array(Math.floor(c.width/10)).fill(1);
-        function draw() {
-            ctx.fillStyle = "rgba(0,0,0,0.05)"; ctx.fillRect(0,0,c.width,c.height);
-            ctx.fillStyle = "#00FF88";
-            drops.map((y, i) => { ctx.fillText(Math.random()>0.5?1:0, i*10, y*10); drops[i] = y*10 > c.height ? 0 : y+1; });
-        }
-        setInterval(draw, 50);
-    </script>
+<script>
+function start() {
+document.getElementById('startOverlay').style.display = 'none';
+document.getElementById('overlay').style.display = 'block';
+}
+</script>
 </body>
 </html>
