@@ -5,47 +5,42 @@
 <title>SECURE TERMINAL | Md Amirul Hoda {পলাশ}</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-    body { margin: 0; background: url('My Photo JPG.png') no-repeat center center fixed; background-size: cover; color: #0f0; font-family: 'Courier New', monospace; text-align: center; overflow: hidden; }
-    
-    /* Matrix Background */
+    body { margin: 0; background: #000; color: #0f0; font-family: 'Courier New', monospace; text-align: center; overflow-x: hidden; }
+    #bg-photo { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('My Photo JPG.png') no-repeat center center fixed; background-size: cover; z-index: -1; opacity: 0.4; }
     #matrix { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.3; }
-
-    #overlay { background: rgba(0, 0, 0, 0.6); min-height: 100vh; padding: 20px; display: none; position: relative; z-index: 1; } 
-
-    .welcome-header { font-size: 2rem; color: #fff; margin-top: 20px; text-transform: uppercase; letter-spacing: 2px; }
-    .name-highlight { font-size: 3.5rem; color: #0f0; text-shadow: 0 0 15px #0f0, 0 0 30px #0f0; margin-bottom: 20px; } 
-
-    /* Terminal Box */
-    .terminal-box { background: rgba(0,0,0,0.8); border: 1px solid #0f0; padding: 15px; max-width: 500px; margin: 10px auto; text-align: left; font-size: 0.8rem; }
-
-    .as-badge { position: absolute; top: 15px; right: 25px; font-size: 2.2rem; color: #0f0; text-shadow: 0 0 10px #0f0; font-weight: bold; border: 2px solid #0f0; padding: 5px 15px; background: rgba(0,0,0,0.5); } 
-
+    #overlay { position: relative; z-index: 1; padding: 20px; display: none; }
+    
+    .welcome-header { font-size: 2rem; color: #fff; margin-top: 20px; text-transform: uppercase; }
+    .name-highlight { font-size: 3rem; color: #0f0; text-shadow: 0 0 10px #0f0; margin-bottom: 20px; }
+    
+    .terminal-box { background: rgba(0,0,0,0.8); border: 1px solid #0f0; padding: 10px; width: 90%; max-width: 500px; margin: 10px auto; text-align: left; font-size: 0.8rem; }
+    
     .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; }
-    .card { border: 2px solid #0f0; padding: 12px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.6); transition: 0.3s; font-size: 0.85rem; }
-    .card:hover { background: #0f0; color: #000; box-shadow: 0 0 15px #0f0; }
-
-    .footer-status { position: fixed; bottom: 10px; left: 10px; font-size: 0.8rem; color: #0f0; text-shadow: 0 0 5px #0f0; z-index: 1000; }
+    .card { border: 1px solid #0f0; padding: 10px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.6); font-size: 0.7rem; }
+    
+    .skills-container { max-width: 400px; margin: 20px auto; text-align: left; }
+    .skill-bar { background: #222; height: 10px; margin: 5px 0; }
+    .skill-fill { background: #0f0; height: 100%; }
+    
+    .footer-status { position: fixed; bottom: 10px; left: 10px; font-size: 0.8rem; color: #0f0; z-index: 1000; }
 </style>
 </head>
-<body> 
+<body>
 
-<!-- Matrix Canvas -->
+<div id="bg-photo"></div>
 <canvas id="matrix"></canvas>
 
-<!-- নাম নেওয়ার ইন্টারফেস -->
+<!-- স্টার্ট ইন্টারফেস -->
 <div id="startOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999; display:flex; flex-direction:column; align-items:center; justify-content:center;">
     <h1 id="typewriter" style="color:#0f0; min-height: 1.2em;"></h1>
-    <input type="text" id="userName" placeholder="ENTER YOUR NAME" style="background:transparent; border:1px solid #0f0; color:#0f0; padding:10px; text-align:center; width:250px;">
-    <button onclick="start()" style="margin-top:20px; background:#0f0; border:none; padding:10px 20px; cursor:pointer; font-weight:bold;">ACCESS TERMINAL</button>
-</div> 
+    <input type="text" id="userName" placeholder="ENTER YOUR NAME" style="background:transparent; border:1px solid #0f0; color:#0f0; padding:10px; text-align:center;">
+    <button onclick="start()" style="margin-top:20px; background:#0f0; border:none; padding:10px 20px; cursor:pointer;">ACCESS TERMINAL</button>
+</div>
 
-<!-- মূল কন্টেন্ট -->
 <div id="overlay">
-    <div class="as-badge">A § S</div> 
     <div class="welcome-header">WELCOME</div>
-    <div class="name-highlight">Md Amirul Hoda {পলাশ}</div> 
+    <div class="name-highlight">Md Amirul Hoda {পলাশ}</div>
     
-    <!-- টার্মিনাল লাইনস -->
     <div class="terminal-box">
         root@system:~$ Initializing...<br>
         root@system:~$ Loading modules...<br>
@@ -53,47 +48,30 @@
     </div>
 
     <div class="grid">
-        <a href="https://www.linkedin.com/in/mohammed-amirul-islam-720119401" class="card"><i class="fab fa-linkedin"></i><br>LinkedIn</a>
-        <a href="https://www.upwork.com/freelancers/~012072c3d002cb852a" class="card"><i class="fab fa-upwork"></i><br>Upwork</a>
-        <a href="https://www.fiverr.com/s/ljqoXVQ" class="card"><i class="fab fa-fiverr"></i><br>Fiverr</a>
-        <a href="https://x.com/mdamirulhoda" class="card"><i class="fab fa-twitter"></i><br>Twitter</a>
-        Python      ██████████ 95%
-JavaScript  █████████  90%
-Linux       ██████████ 95%
-Ethical Hacking ████████ 85%
-AI          █████████  90%
-        <a href="#" class="card">📡 Net Scan</a><a href="#" class="card">🔐 Pass Gen</a><a href="#" class="card">🕵️ IP Track</a>
-        <a href="#" class="card">💻 Proxy</a><a href="#" class="card">🛠️ Exploit</a><a href="#" class="card">🛡️ Firewall</a>
-        <a href="#" class="card">🧬 Hash</a><a href="#" class="card">📂 Encrypt</a><a href="#" class="card">🌐 DNS</a>
-        <a href="#" class="card">📱 Phish</a><a href="#" class="card">⚡ DDoS</a><a href="#" class="card">📁 SQL</a>
-        <a href="#" class="card">🖥️ SSH</a><a href="#" class="card">🔍 Port</a><a href="#" class="card">🔑 SSL</a>
-        <a href="#" class="card">🎭 Spoof</a><a href="#" class="card">📡 Wi-Fi</a><a href="#" class="card">🖱️ Keylog</a>
-        <a href="#" class="card">🛰️ Geo</a><a href="#" class="card">📉 Packet</a><a href="#" class="card">🛡️ Anti</a>
-        <a href="#" class="card">💻 VM</a><a href="#" class="card">⚡ Malware</a><a href="#" class="card">🔍 Audit</a>
-        <a href="#" class="card">📁 Backdoor</a>
+        <a href="#" class="card"><i class="fab fa-linkedin"></i><br>LinkedIn</a>
+        <a href="#" class="card"><i class="fab fa-upwork"></i><br>Upwork</a>
+        <a href="#" class="card"><i class="fab fa-fiverr"></i><br>Fiverr</a>
+        <a href="#" class="card"><i class="fab fa-twitter"></i><br>Twitter</a>
+    </div>
+
+    <div class="skills-container">
+        <div>Python <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+        <div>JavaScript <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div>Linux <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+        <div>Ethical Hacking <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div>AI <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
     </div>
 
     <div class="footer-status">> System: ONLINE | Security: MAXIMUM | © 2026 Md Amirul</div>
-</div> 
-
-<audio id="hackerAudio" loop><source src="Binary Code - Interface Sound Effects _ Sci-Fi Computer Beeps _ Data Processing Sounds(MP3_70K).mp3" type="audio/mpeg"></audio> 
+</div>
 
 <script>
-    // Typing Animation
-    let txt = "ACCESSING SECURE TERMINAL..."; let i = 0;
+    // টাইপিং অ্যানিমেশন
+    let txt = "ACCESSING SECURE TERMINAL...", i = 0;
     function type() { if(i < txt.length) { document.getElementById('typewriter').innerHTML += txt.charAt(i); i++; setTimeout(type, 100); } }
     type();
 
-    // Start Function
-    function start() {
-        if(document.getElementById('userName').value.trim() !== "") {
-            document.getElementById('startOverlay').style.display = 'none';
-            document.getElementById('overlay').style.display = 'block';
-            document.getElementById('hackerAudio').play();
-        }
-    }
-
-    // Matrix Rain Effect
+    // ম্যাট্রিক্স রেইন
     let c = document.getElementById("matrix"), ctx = c.getContext("2d");
     c.height = window.innerHeight; c.width = window.innerWidth;
     let drops = Array(Math.floor(c.width/15)).fill(1);
@@ -103,7 +81,13 @@ AI          █████████  90%
         drops.map((y, i) => { ctx.fillText("01", i*15, y*15); drops[i] = y*15 > c.height ? 0 : y+1; });
     }
     setInterval(draw, 60);
+
+    function start() {
+        if(document.getElementById('userName').value.trim() !== "") {
+            document.getElementById('startOverlay').style.display = 'none';
+            document.getElementById('overlay').style.display = 'block';
+        }
+    }
 </script>
 </body>
-            </html>
-            
+</html>
