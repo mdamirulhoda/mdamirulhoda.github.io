@@ -3,80 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>SECURE TERMINAL | Md Amirul Hoda {পলাশ}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { margin: 0; padding: 0; overflow-x: hidden; background: #000; color: #0f0; font-family: 'Courier New', monospace; }
-        #bg-img { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.2; object-fit: cover; }
-        #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-        #overlay { position: relative; z-index: 2; text-align: center; padding: 20px; }
-        
-        .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #0f0; box-shadow: 0 0 20px #0f0; margin: 10px 0; }
-        .glitch { color: #0f0; font-size: 2rem; text-shadow: 0 0 10px #0f0; animation: glow 1.5s infinite alternate; }
-        @keyframes glow { from { text-shadow: 0 0 10px #0f0; } to { text-shadow: 0 0 30px #0f0, 0 0 60px #0f0; } }
-        
-        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 800px; margin: 20px auto; }
-        .card { border: 1px solid #0f0; padding: 10px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.8); transition: 0.3s; }
-        .card:hover { background: #0f0; color: #000; transform: scale(1.05); }
+        body { background: #000; color: #0f0; font-family: 'Courier New', monospace; text-align: center; margin: 0; padding: 20px; }
+        .hero { margin-top: 30px; }
+        .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 4px solid #00ff00; box-shadow: 0 0 20px #00ff00; margin: 20px 0; }
+        .glitch { color: #00ff00; font-size: 40px; animation: glow 1.5s infinite alternate; }
+        @keyframes glow { from { text-shadow: 0 0 10px #00ff00; } to { text-shadow: 0 0 30px #00ff00, 0 0 60px #00ff00; } }
+        #startBtn { padding: 15px 30px; background: #000; color: #0f0; border: 2px solid #0f0; cursor: pointer; font-size: 1.2rem; }
     </style>
 </head>
 <body>
 
-    <img id="bg-img" src="https://i.ibb.co/C0VdYy6/hacker-img.jpg" alt="Background">
-    <canvas id="canvas"></canvas>
-    
-    <div id="overlay">
-        <h1 class="glitch" id="welcomeMsg">INITIALIZING SYSTEM...</h1>
-        <img src="https://i.ibb.co/C0VdYy6/hacker-img.jpg" alt class="profile-img">
-        <h2>Md Amirul Hoda {পলাশ}</h2>
-        <p>AI Specialist | Prompt Engineer | Cyber Security Enthusiast</p>
+<section class="hero">
+    <h1 class="glitch" id="terminalText">INITIALIZING...</h1>
+    <!-- তোমার ছবির লিংক এখানে সরাসরি দাও -->Https://ibb.co.com/Vk41tV9
+    <img src="https://i.ibb.co/C0VdYy6/hacker-img.jpg" alt="Md Amirul Hoda" class="profile-img">
+    <h2>Md Amirul Hoda {পলাশ}</h2>
+    <p>AI Specialist | Prompt Engineer | Cyber Security Enthusiast</p>
+    <button id="startBtn">ACCESS SYSTEM</button>
+</section>
+
+<audio id="hackSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+
+<script>
+    const textArray = ["INITIALIZING...", "CHECKING SECURITY...", "AUTHENTICATING USER...", "ACCESS GRANTED", "WELCOME TO MY CYBER TERMINAL"];
+    let i = 0;
+    const h1 = document.getElementById('terminalText');
+    const audio = document.getElementById('hackSound');
+
+    document.getElementById('startBtn').onclick = () => {
+        audio.play();
+        document.getElementById('startBtn').style.display = 'none';
         
-        <div class="grid">
-            <a href="https://www.linkedin.com/in/mohammed-amirul-islam-720119401" class="card"><i class="fab fa-linkedin"></i><br>LinkedIn</a>
-            <a href="https://www.upwork.com/freelancers/~012072c3d002cb852a" class="card"><i class="fab fa-upwork"></i><br>Upwork</a>
-            <a href="https://www.fiverr.com/s/ljqoXVQ" class="card"><i class="fab fa-fiverr"></i><br>Fiverr</a>
-            <a href="https://x.com/mdamirulhoda" class="card"><i class="fab fa-twitter"></i><br>Twitter</a>
-            <a href="#" class="card"><i class="fab fa-python"></i><br>Python</a>
-            <a href="#" class="card"><i class="fab fa-linux"></i><br>Kali</a>
-            <a href="#" class="card"><i class="fas fa-user-secret"></i><br>Metasploit</a>
-            <a href="#" class="card"><i class="fas fa-network-wired"></i><br>Nmap</a>
-        </div>
-    </div>
+        // টেক্সট পরিবর্তনের লুপ
+        setInterval(() => {
+            if(i < textArray.length) {
+                h1.innerText = textArray[i];
+                i++;
+            }
+        }, 1000);
+    };
+</script>
 
-    <audio id="hackerAudio" loop><source src="https://www.soundjay.com/buttons/sounds/button-3.mp3" type="audio/mpeg"></audio>
-
-    <script>
-        // বাটন ও টেক্সট সিকোয়েন্স
-        window.onload = () => {
-            document.body.innerHTML += `<div id="startOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999; display:flex; align-items:center; justify-content:center;">
-                <button style="background:#000; color:#0f0; border:2px solid #0f0; padding:20px; font-size:20px; cursor:pointer;">ACCESS SYSTEM</button>
-            </div>`;
-
-            document.getElementById('startOverlay').onclick = () => {
-                let userName = prompt("Enter your name:");
-                document.getElementById('welcomeMsg').innerText = userName ? "WELCOME, " + userName.toUpperCase() : "ACCESS GRANTED";
-                document.getElementById('hackerAudio').play();
-                document.getElementById('startOverlay').style.display = 'none';
-            };
-        };
-
-        // ম্যাট্রিক্স ইফেক্ট
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        const drops = Array(Math.floor(canvas.width / 20)).fill(1);
-        function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#0f0';
-            drops.forEach((y, i) => {
-                const text = String.fromCharCode(0x30A0 + Math.random() * 96);
-                ctx.fillText(text, i * 20, y * 20);
-                if (y * 20 > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            });
-        }
-        setInterval(draw, 50);
-    </script>
 </body>
 </html>
