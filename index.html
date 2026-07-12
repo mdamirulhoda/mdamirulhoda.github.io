@@ -6,10 +6,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { margin: 0; background: url('My Photo JPG.png') no-repeat center center fixed; background-size: cover; color: #0f0; font-family: 'Courier New', monospace; text-align: center; }
-        /* এখানে background: rgba(0,0,0,0.5) করে দিয়েছি যাতে ছবি আরও ক্লিয়ার দেখা যায় */
         #overlay { background: rgba(0, 0, 0, 0.5); min-height: 100vh; padding: 20px; display: none; }
         .welcome-text { font-size: 2.5rem; margin-top: 20px; font-weight: bold; color: #fff; text-shadow: 0 0 10px #0f0; }
-        .name-text { font-size: 3.5rem; color: #0f0; text-shadow: 0 0 15px #0f0, 0 0 30px #0f0; margin-bottom: 30px; }
         .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; }
         .card { border: 2px solid #0f0; padding: 12px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.6); transition: 0.3s; font-size: 0.85rem; }
         .card:hover { background: #0f0; color: #000; box-shadow: 0 0 15px #0f0; }
@@ -25,8 +23,8 @@
     </div>
 
     <div id="overlay">
+        <!-- এখানে নাম শুধু একবারই থাকবে -->
         <div class="welcome-text">WELCOME <span id="displayName"></span> 🤗</div>
-        <div class="name-text">Md Amirul Hoda {পলাশ}</div>
         
         <div class="grid">
             <a href="https://www.linkedin.com/in/mohammed-amirul-islam-720119401" class="card"><i class="fab fa-linkedin"></i><br>LinkedIn</a>
@@ -53,7 +51,8 @@
         function start() {
             let name = document.getElementById('userName').value;
             if(name.trim() !== "") {
-                document.getElementById('displayName').innerText = name.toUpperCase();
+                // এখানে ইনপুট দেওয়া নামটির সাথে তোমার নামটি যুক্ত করে দিলাম
+                document.getElementById('displayName').innerText = name.toUpperCase() + " | MD AMIRUL HODA {পলাশ}";
                 document.getElementById('startOverlay').style.display = 'none';
                 document.getElementById('overlay').style.display = 'block';
                 document.getElementById('hackerAudio').play();
