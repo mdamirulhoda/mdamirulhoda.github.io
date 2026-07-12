@@ -3,58 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <title>SECURE TERMINAL | Md Amirul Hoda {পলাশ}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { 
-            margin: 0; padding: 0; 
-    
-            background: url('My Photo JPG.png') no-repeat center center fixed; 
-            background-size: cover; 
-            color: #0f0; font-family: 'Courier New', monospace; text-align: center; 
-            overflow: auto; 
-        }
-        #overlay { background: rgba(0, 0, 0, 0.7); min-height: 100vh; padding: 20px; }
-        .welcome-text { font-size: 2.5rem; margin-top: 20px; font-weight: bold; color: #0f0; text-shadow: 0 0 10px #0f0; }
-        .name-text { font-size: 1.8rem; margin-bottom: 30px; color: #fff; }
-        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 800px; margin: 20px auto; }
-        .card { border: 1px solid #0f0; padding: 15px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.8); transition: 0.5s; }
-        .card:hover { background: #0f0; color: #000; }
+        body { margin: 0; background: url('My Photo JPG.png') no-repeat center center fixed; background-size: cover; color: #0f0; font-family: 'Courier New', monospace; overflow: hidden; }
+        #overlay { background: rgba(0, 0, 0, 0.85); height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
+        .welcome { font-size: 2rem; margin-bottom: 10px; color: #fff; text-shadow: 0 0 10px #fff; }
+        .name { font-size: 3rem; color: #0f0; text-shadow: 0 0 10px #0f0, 0 0 20px #0f0; margin-bottom: 20px; text-align: center; }
+        #matrix { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.3; }
+        
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; width: 100%; max-width: 800px; }
+        .card { border: 2px solid #0f0; padding: 15px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.7); text-align: center; font-weight: bold; transition: 0.3s; }
+        .card:hover { background: #0f0; color: #000; box-shadow: 0 0 15px #0f0; }
     </style>
 </head>
 <body>
 
-    <div id="overlay">
-        <div class="welcome-text">ACCESS GRANTED</div>
-        <div class="name-text">Md Amirul Hoda {পলাশ}</div>
+    <canvas id="matrix"></canvas>
+
+    <!-- শুরুতে নাম নেওয়ার সেকশন -->
+    <div id="startOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <h1 style="color:#0f0;">INITIALIZE SYSTEM</h1>
+        <input type="text" id="userName" placeholder="ENTER YOUR NAME" style="background:transparent; border:1px solid #0f0; color:#0f0; padding:10px; text-align:center; width: 250px;">
+        <button onclick="start()" style="margin-top:20px; background:#0f0; border:none; padding:10px 20px; cursor:pointer; font-weight:bold;">ACCESS TERMINAL</button>
+    </div>
+
+    <!-- মূল পেজ -->
+    <div id="overlay" style="display:none;">
+        <div class="welcome">WELCOME <span id="displayName"></span> 🤗</div>
+        <div class="name">Md Amirul Hoda {পলাশ}</div>
         
         <div class="grid">
-            <a href="https://www.linkedin.com/in/mohammed-amirul-islam-720119401" class="card"><i class="fab fa-linkedin"></i><br>LinkedIn</a>
-            <a href="https://www.upwork.com/freelancers/~012072c3d002cb852a" class="card"><i class="fab fa-upwork"></i><br>Upwork</a>
-            <a href="https://www.fiverr.com/s/ljqoXVQ" class="card"><i class="fab fa-fiverr"></i><br>Fiverr</a>
-            <a href="https://x.com/mdamirulhoda" class="card"><i class="fab fa-twitter"></i><br>Twitter</a>
-            <a href="#" class="card"><i class="fab fa-python"></i><br>Python</a>
-            <a href="#" class="card"><i class="fab fa-linux"></i><br>Kali</a>
-            <a href="#" class="card"><i class="fas fa-user-secret"></i><br>Metasploit</a>
-            <a href="#" class="card"><i class="fas fa-network-wired"></i><br>Nmap</a>
+            <a href="#" class="card">📡 Network Scan</a>
+            <a href="#" class="card">🔐 Password Gen</a>
+            <a href="#" class="card">🕵️ IP Tracker</a>
+            <a href="#" class="card">💻 Proxy Switch</a>
+            <a href="#" class="card">🛠️ Exploit DB</a>
+            <a href="#" class="card">🛡️ Firewall Log</a>
+            <a href="#" class="card">🧬 Hash Crack</a>
+            <a href="#" class="card">📂 Data Encrypt</a>
+            <a href="#" class="card">🌐 DNS Lookup</a>
+            <a href="#" class="card">📱 Phishing Sim</a>
+            <a href="#" class="card">⚡ DDoS Test</a>
+            <a href="#" class="card">📁 SQL Inject</a>
         </div>
     </div>
 
-    <!-- হ্যাকিং সাউন্ড ফাইল -->
-    <audio id="hackerAudio" loop>
-        <source src="Binary Code - Interface Sound Effects _ Sci-Fi Computer Beeps _ Data Processing Sounds(MP3_70K).mp3" type="audio/mpeg">
-    </audio>
-
     <script>
-        window.onload = () => {
-            document.body.innerHTML += `<div id="startOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:999; display:flex; align-items:center; justify-content:center;">
-                <button style="background:#000; color:#0f0; border:2px solid #0f0; padding:20px; font-size:20px; cursor:pointer;">INITIALIZE TERMINAL</button>
-            </div>`;
-
-            document.getElementById('startOverlay').onclick = () => {
-                document.getElementById('hackerAudio').play();
+        function start() {
+            let name = document.getElementById('userName').value;
+            if(name.trim() !== "") {
+                document.getElementById('displayName').innerText = name.toUpperCase();
                 document.getElementById('startOverlay').style.display = 'none';
-            };
-        };
+                document.getElementById('overlay').style.display = 'flex';
+            }
+        }
+
+        // Matrix Effect
+        let c = document.getElementById("matrix");
+        let ctx = c.getContext("2d");
+        c.height = window.innerHeight; c.width = window.innerWidth;
+        let matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*";
+        matrix = matrix.split("");
+        let fontSize = 10;
+        let columns = c.width/fontSize;
+        let drops = [];
+        for(let x = 0; x < columns; x++) drops[x] = 1;
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+            ctx.fillRect(0, 0, c.width, c.height);
+            ctx.fillStyle = "#0F0";
+            ctx.font = fontSize + "px arial";
+            for(let i = 0; i < drops.length; i++) {
+                let text = matrix[Math.floor(Math.random()*matrix.length)];
+                ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+                if(drops[i]*fontSize > c.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 35);
     </script>
 </body>
 </html>
