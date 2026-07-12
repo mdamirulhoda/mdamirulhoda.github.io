@@ -2,37 +2,48 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <title>SECURE TERMINAL | Md Amirul Hoda (পলাশ)</title>
+    <title>SECURE TERMINAL | Md Amirul Hoda {পলাশ}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { 
-            margin: 0; padding: 0; overflow: hidden; height: 100vh;
-            background: url('https://i.ibb.co/C0VdYy6/hacker-img.jpg') no-repeat center center fixed; /* এখানে তোমার ছবির সরাসরি লিংক বসানো হয়েছে */
-            background-size: cover;
-            font-family: 'Courier New', monospace;
-        }
+        body { margin: 0; padding: 0; overflow: hidden; height: 100vh; background: url('https://i.ibb.co/C0VdYy6/hacker-img.jpg') no-repeat center center fixed; background-size: cover; font-family: 'Courier New', monospace; }
         #canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-        #overlay { position: relative; z-index: 2; text-align: center; padding-top: 10%; }
-        h1 { color: #0f0; text-shadow: 2px 2px 5px #000; font-size: 2rem; }
-        .menu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 400px; margin: 30px auto; }
-        .btn { border: 1px solid #0f0; padding: 12px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.8); font-weight: bold; }
-        .btn:hover { background: #0f0; color: #000; }
+        #overlay { position: relative; z-index: 2; text-align: center; padding-top: 5%; }
+        h1 { color: #0f0; text-shadow: 2px 2px 5px #000; font-size: 1.8rem; }
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 800px; margin: 20px auto; }
+        .card { border: 1px solid #0f0; padding: 10px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.7); display: block; }
+        .card:hover { background: #0f0; color: #000; }
+        #audioBtn { margin-top: 10px; background: #000; color: #0f0; border: 1px solid #0f0; padding: 10px; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <canvas id="canvas"></canvas>
     <div id="overlay">
-        <h1>ACCESS GRANTED: POLASH</h1>
-        <div class="menu">
-            <a href="https://www.linkedin.com/in/mohammed-amirul-islam-720119401" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://www.upwork.com/freelancers/~012072c3d002cb852a" class="btn"><i class="fab fa-upwork"></i> Upwork</a>
-            <a href="https://www.fiverr.com/s/ljqoXVQ" class="btn"><i class="fab fa-fiverr"></i> Fiverr</a>
-            <a href="https://x.com/mdamirulhoda" class="btn"><i class="fab fa-twitter"></i> Twitter</a>
+        <h1 id="welcomeMsg">INITIALIZING SYSTEM...</h1>
+        
+        <div class="grid">
+            <a href="https://www.linkedin.com/in/mohammed-amirul-islam-720119401" class="card"><i class="fab fa-linkedin"></i><br>LinkedIn</a>
+            <a href="https://www.upwork.com/freelancers/~012072c3d002cb852a" class="card"><i class="fab fa-upwork"></i><br>Upwork</a>
+            <a href="https://www.fiverr.com/s/ljqoXVQ" class="card"><i class="fab fa-fiverr"></i><br>Fiverr</a>
+            <a href="https://x.com/mdamirulhoda" class="card"><i class="fab fa-twitter"></i><br>Twitter</a>
+            
+            <a href="#" class="card" onclick="alert('Accessing Password Cracker...')"><i class="fas fa-lock"></i><br>Cracker</a>
+            <a href="#" class="card" onclick="alert('Neural Link Initiated...')"><i class="fas fa-microchip"></i><br>Neural</a>
+            <a href="#" class="card" onclick="alert('Scanning Database...')"><i class="fas fa-database"></i><br>Database</a>
+            <a href="#" class="card" onclick="alert('Terminating Security...')"><i class="fas fa-terminal"></i><br>Terminal</a>
         </div>
+        
+        <button id="audioBtn" onclick="playAudio()">ACTIVATE SOUND</button>
     </div>
 
+    <audio id="hackerAudio" loop><source src="https://www.soundjay.com/buttons/sounds/button-3.mp3" type="audio/mpeg"></audio>
+
     <script>
+        window.onload = () => {
+            let userName = prompt("Enter your name to access the system:");
+            document.getElementById('welcomeMsg').innerText = userName ? "WELCOME, " + userName.toUpperCase() + " | MD AMIRUL HODA {পলাশ}" : "ACCESS GRANTED: MD AMIRUL HODA {পলাশ}";
+        };
+
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
@@ -50,6 +61,8 @@
             });
         }
         setInterval(draw, 50);
+
+        function playAudio() { document.getElementById('hackerAudio').play(); }
     </script>
 </body>
 </html>
