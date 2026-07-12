@@ -7,8 +7,8 @@
     <style>
         body { 
             margin: 0; padding: 0; 
-            /* আপনার ছবির লিংক এখানে ব্যাকগ্রাউন্ড হিসেবে দেওয়া হয়েছে */
-            background: url('https://i.ibb.co/C0VdYy6/hacker-img.jpg') no-repeat center center fixed; 
+    
+            background: url('My Photo JPG.png') no-repeat center center fixed; 
             background-size: cover; 
             color: #0f0; font-family: 'Courier New', monospace; text-align: center; 
             overflow: auto; 
@@ -39,14 +39,13 @@
         </div>
     </div>
 
-    <!-- হ্যাকিং সাউন্ড -->
+    <!-- হ্যাকিং সাউন্ড ফাইল -->
     <audio id="hackerAudio" loop>
-        <source src="https://actions.google.com/sounds/v1/foley/keyboard_typing_fast.ogg" type="audio/ogg">
+        <source src="Binary Code - Interface Sound Effects _ Sci-Fi Computer Beeps _ Data Processing Sounds(MP3_70K).mp3" type="audio/mpeg">
     </audio>
 
     <script>
         window.onload = () => {
-            // বাটন ছাড়া অডিও বাজানো প্রায় সব ব্রাউজারে ব্লক করা থাকে, তাই বাটন দিচ্ছি
             document.body.innerHTML += `<div id="startOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:999; display:flex; align-items:center; justify-content:center;">
                 <button style="background:#000; color:#0f0; border:2px solid #0f0; padding:20px; font-size:20px; cursor:pointer;">INITIALIZE TERMINAL</button>
             </div>`;
