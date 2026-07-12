@@ -5,30 +5,26 @@
     <title>SECURE TERMINAL | Md Amirul Hoda {পলাশ}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { margin: 0; padding: 0; overflow-x: hidden; background: #000; color: #0f0; font-family: 'Courier New', monospace; }
-        #bg-img { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.2; object-fit: cover; }
+        body { margin: 0; padding: 0; background: #000; color: #0f0; font-family: 'Courier New', monospace; text-align: center; }
         #canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-        #overlay { position: relative; z-index: 2; text-align: center; padding: 20px; }
+        #overlay { position: relative; z-index: 2; padding: 20px; opacity: 0; animation: fadeIn 2s forwards; }
         
-        .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #0f0; box-shadow: 0 0 20px #0f0; margin: 10px 0; }
-        .glitch { color: #0f0; font-size: 2rem; text-shadow: 0 0 10px #0f0; animation: glow 1.5s infinite alternate; }
-        @keyframes glow { from { text-shadow: 0 0 10px #0f0; } to { text-shadow: 0 0 30px #0f0, 0 0 60px #0f0; } }
+        @keyframes fadeIn { to { opacity: 1; } }
         
+        .welcome-text { font-size: 2.5rem; margin-top: 20px; font-weight: bold; }
+        .name-text { font-size: 1.8rem; margin-bottom: 30px; color: #fff; }
         .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 800px; margin: 20px auto; }
-        .card { border: 1px solid #0f0; padding: 10px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.8); transition: 0.3s; }
-        .card:hover { background: #0f0; color: #000; transform: scale(1.05); }
+        .card { border: 1px solid #0f0; padding: 15px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.8); transition: 0.5s; }
+        .card:hover { background: #0f0; color: #000; }
     </style>
 </head>
 <body>
 
-    <img id="bg-img" src="https://i.ibb.co/C0VdYy6/hacker-img.jpg" alt="Background">
     <canvas id="canvas"></canvas>
     
     <div id="overlay">
-        <h1 class="glitch" id="welcomeMsg">INITIALIZING SYSTEM...</h1>
-        <img src="https://i.ibb.co/C0VdYy6/hacker-img.jpg" alt="Md Amirul Hoda" class="profile-img">
-        <h2>Md Amirul Hoda {পলাশ}</h2>
-        <p>AI Specialist | Prompt Engineer | Cyber Security Enthusiast</p>
+        <div class="welcome-text">WELCOME 🤗</div>
+        <div class="name-text">Md Amirul Hoda {পলাশ}</div>
         
         <div class="grid">
             <a href="https://www.linkedin.com/in/mohammed-amirul-islam-720119401" class="card"><i class="fab fa-linkedin"></i><br>LinkedIn</a>
@@ -45,15 +41,13 @@
     <audio id="hackerAudio" loop><source src="https://www.soundjay.com/buttons/sounds/button-3.mp3" type="audio/mpeg"></audio>
 
     <script>
-        // বাটন ও টেক্সট সিকোয়েন্স
+        // বাটন ও এনিমেশন
         window.onload = () => {
             document.body.innerHTML += `<div id="startOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999; display:flex; align-items:center; justify-content:center;">
                 <button style="background:#000; color:#0f0; border:2px solid #0f0; padding:20px; font-size:20px; cursor:pointer;">ACCESS SYSTEM</button>
             </div>`;
 
             document.getElementById('startOverlay').onclick = () => {
-                let userName = prompt("Enter your name:");
-                document.getElementById('welcomeMsg').innerText = userName ? "WELCOME, " + userName.toUpperCase() : "ACCESS GRANTED";
                 document.getElementById('hackerAudio').play();
                 document.getElementById('startOverlay').style.display = 'none';
             };
