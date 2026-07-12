@@ -5,32 +5,36 @@
 <title>SECURE TERMINAL | Md Amirul Hoda {পলাশ}</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-body { margin: 0; background: url('My Photo JPG.png') no-repeat center center fixed; background-size: cover; color: #0f0; font-family: 'Courier New', monospace; text-align: center; overflow-x: hidden; }
-#matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.15; }
-#overlay { background: rgba(0, 0, 0, 0.4); min-height: 100vh; padding: 20px; display: none; position: relative; }
+body { margin: 0; background: #000; color: #0f0; font-family: 'Courier New', monospace; text-align: center; overflow-x: hidden; }
+#bg-img { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('My Photo JPG.png') no-repeat center center fixed; background-size: cover; opacity: 0.4; z-index: -1; }
+#matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.3; }
+#overlay { position: relative; z-index: 1; padding: 20px; display: none; }
 
-.as-badge { position: absolute; top: 15px; right: 25px; font-size: 2rem; color: #0f0; border: 2px solid #0f0; padding: 5px 15px; background: rgba(0,0,0,0.5); z-index: 10; }
-.welcome-header { font-size: 2rem; color: #fff; margin-top: 20px; text-transform: uppercase; }
-.name-highlight { font-size: 3rem; color: #0f0; text-shadow: 0 0 10px #0f0; margin-bottom: 20px; }
+.welcome-header { font-size: 2rem; color: #fff; margin-top: 20px; text-transform: uppercase; letter-spacing: 2px; }
+.name-highlight { font-size: 3.5rem; color: #0f0; text-shadow: 0 0 15px #0f0, 0 0 30px #0f0; margin-bottom: 20px; }
 
-.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; max-width: 900px; margin: 20px auto; }
-.card { border: 1px solid #0f0; padding: 10px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.6); font-size: 0.75rem; }
-.card:hover { background: #0f0; color: #000; }
+.as-badge { position: absolute; top: 15px; right: 25px; font-size: 2rem; color: #0f0; border: 2px solid #0f0; padding: 5px 15px; background: rgba(0,0,0,0.5); }
 
-.skills-container { max-width: 500px; margin: 15px auto; text-align: left; }
-.skill-bar { margin-bottom: 8px; }
-.progress-bg { background: #1a1a1a; height: 8px; border: 1px solid #0f0; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; }
+.card { border: 2px solid #0f0; padding: 10px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.6); transition: 0.3s; font-size: 0.8rem; }
+.card:hover { background: #0f0; color: #000; box-shadow: 0 0 15px #0f0; }
+
+.skills-container { max-width: 500px; margin: 20px auto; text-align: left; }
+.skill-bar { margin-bottom: 10px; font-size: 0.9rem; }
+.progress-bg { background: #222; height: 8px; border: 1px solid #0f0; }
 .progress-fill { background: #0f0; height: 100%; }
 
-.footer-status { position: fixed; bottom: 10px; left: 10px; font-size: 0.7rem; color: #0f0; }
+.footer-status { position: fixed; bottom: 10px; left: 10px; font-size: 0.8rem; color: #0f0; text-shadow: 0 0 5px #0f0; }
 </style>
 </head>
 <body>
 
+<div id="bg-img"></div>
 <canvas id="matrix-canvas"></canvas>
 
+<!-- স্টার্ট ইন্টারফেস -->
 <div id="startOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-<h1 id="typewriter" style="color:#0f0;"></h1>
+<h1 id="typewriter" style="color:#0f0; font-size: 2rem; min-height: 2em;"></h1>
 <input type="text" id="userName" placeholder="ENTER YOUR NAME" style="background:transparent; border:1px solid #0f0; color:#0f0; padding:10px; text-align:center; width:250px;">
 <button onclick="start()" style="margin-top:20px; background:#0f0; border:none; padding:10px 20px; cursor:pointer; font-weight:bold;">ACCESS TERMINAL</button>
 </div>
@@ -45,6 +49,13 @@ body { margin: 0; background: url('My Photo JPG.png') no-repeat center center fi
 <a href="https://www.upwork.com/freelancers/~012072c3d002cb852a" class="card"><i class="fab fa-upwork"></i><br>Upwork</a>
 <a href="https://www.fiverr.com/s/ljqoXVQ" class="card"><i class="fab fa-fiverr"></i><br>Fiverr</a>
 <a href="https://x.com/mdamirulhoda" class="card"><i class="fab fa-twitter"></i><br>Twitter</a>
+<div class="skills-container">
+<div class="skill-bar">Python <div class="progress-bg"><div class="progress-fill" style="width:95%"></div></div></div>
+<div class="skill-bar">JavaScript <div class="progress-bg"><div class="progress-fill" style="width:90%"></div></div></div>
+<div class="skill-bar">Linux <div class="progress-bg"><div class="progress-fill" style="width:95%"></div></div></div>
+<div class="skill-bar">Ethical Hacking <div class="progress-bg"><div class="progress-fill" style="width:85%"></div></div></div>
+<div class="skill-bar">AI <div class="progress-bg"><div class="progress-fill" style="width:90%"></div></div></div>
+</div>
 <a href="#" class="card">📡 Net Scan</a><a href="#" class="card">🔐 Pass Gen</a><a href="#" class="card">🕵️ IP Track</a>
 <a href="#" class="card">💻 Proxy</a><a href="#" class="card">🛠️ Exploit</a><a href="#" class="card">🛡️ Firewall</a>
 <a href="#" class="card">🧬 Hash</a><a href="#" class="card">📂 Encrypt</a><a href="#" class="card">🌐 DNS</a>
@@ -55,23 +66,31 @@ body { margin: 0; background: url('My Photo JPG.png') no-repeat center center fi
 <a href="#" class="card">💻 VM</a><a href="#" class="card">⚡ Malware</a><a href="#" class="card">🔍 Audit</a>
 <a href="#" class="card">📁 Backdoor</a>
 </div>
-
-<div class="skills-container">
-<div class="skill-bar">Python <div class="progress-bg"><div class="progress-fill" style="width:95%"></div></div></div>
-<div class="skill-bar">JavaScript <div class="progress-bg"><div class="progress-fill" style="width:90%"></div></div></div>
-<div class="skill-bar">Linux <div class="progress-bg"><div class="progress-fill" style="width:95%"></div></div></div>
-<div class="skill-bar">Ethical Hacking <div class="progress-bg"><div class="progress-fill" style="width:85%"></div></div></div>
-<div class="skill-bar">AI <div class="progress-bg"><div class="progress-fill" style="width:90%"></div></div></div>
-</div>
 <div class="footer-status">> System: ONLINE | Security: MAXIMUM | © 2026 Md Amirul</div>
 </div>
 
-<audio id="hackerAudio" loop><source src="Binary Code - Interface Sound Effects _ Sci-Fi Computer Beeps _ Data Processing Sounds(MP3_70K).mp3" type="audio/mpeg"></audio>
+<audio id="hackerAudio" loop>
+<source src="Binary Code - Interface Sound Effects _ Sci-Fi Computer Beeps _ Data Processing Sounds(MP3_70K).mp3" type="audio/mpeg">
+</audio>
 
 <script>
-const text = "ACCESSING SECURE TERMINAL...";
-let i = 0; function type() { if(i < text.length) { document.getElementById("typewriter").innerHTML += text.charAt(i); i++; setTimeout(type, 100); } }
+// টাইপিং অ্যানিমেশন
+const text = "ACCESSING SECURE TERMINAL..."; let i = 0;
+function type() { if (i < text.length) { document.getElementById("typewriter").innerHTML += text.charAt(i); i++; setTimeout(type, 100); } }
 type();
+
+// ম্যাট্রিক্স রেইন
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+const matrix = "01"; const fontSize = 16;
+const drops = Array(Math.floor(canvas.width/fontSize)).fill(1);
+function draw() {
+ctx.fillStyle = "rgba(0,0,0,0.05)"; ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle = "#0f0"; ctx.font = fontSize + "px monospace";
+drops.map((y, index) => { ctx.fillText(matrix[Math.floor(Math.random()*matrix.length)], indexfontSize, yfontSize); drops[index] = y*fontSize > canvas.height ? 0 : y+1; });
+}
+setInterval(draw, 50);
 
 function start() {
 if(document.getElementById('userName').value.trim() !== "") {
@@ -80,16 +99,6 @@ document.getElementById('overlay').style.display = 'block';
 document.getElementById('hackerAudio').play();
 }
 }
-
-const canvas = document.getElementById('matrix-canvas'), ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-const drops = Array(Math.floor(canvas.width/20)).fill(1);
-function draw() {
-ctx.fillStyle = "rgba(0,0,0,0.05)"; ctx.fillRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle = "#0F0"; ctx.font = "15px monospace";
-drops.map((y, i) => { ctx.fillText(Math.floor(Math.random()2), i20, y20); drops[i] = y20 > canvas.height ? 0 : y+1; });
-}
-setInterval(draw, 50);
 </script>
 </body>
 </html>
