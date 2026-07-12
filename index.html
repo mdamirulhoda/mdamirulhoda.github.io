@@ -1,47 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <title>Md Amirul Hoda (পলাশ) | AI Specialist</title>
+    <title>System Access | Md Amirul Hoda (পলাশ)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0b0f19; color: #e2e8f0; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
-        .hero { text-align: center; padding: 80px 20px; animation: fadeInUp 1s; }
-        .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 5px solid #6366f1; margin-bottom: 20px; object-fit: cover; }
-        h1 { color: #6366f1; font-size: 2.5rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto; padding: 20px; animation: fadeInUp 1.5s; }
-        .card { background: #1e293b; padding: 30px; border-radius: 20px; text-decoration: none; color: white; text-align: center; border: 1px solid #334155; transition: 0.4s; }
-        .card:hover { transform: translateY(-10px); border-color: #6366f1; background: #0f172a; }
-        .card i { font-size: 3rem; margin-bottom: 15px; color: #6366f1; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        body { background: #000; color: #0f0; font-family: 'Courier New', monospace; margin: 0; padding: 20px; overflow-x: hidden; }
+        #terminal { font-size: 1.2rem; line-height: 1.5; margin-bottom: 20px; }
+        .hidden { display: none; }
+        .hero { text-align: center; padding: 50px 0; }
+        h1 { color: #0f0; font-size: 2.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto; }
+        .card { background: #111; padding: 20px; border-radius: 15px; text-decoration: none; color: #0f0; text-align: center; border: 1px solid #0f0; transition: 0.4s; }
+        .card:hover { transform: scale(1.05); background: #002200; }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <!-- তোমার ছবি এখানে লিঙ্ক করা হয়েছে -->
-        <img src="https://raw.githubusercontent.com/mdamirulhoda/mdamirulhoda.github.io/main/43857.jpg" alt="Amirul Hoda Polash" class="profile-img">
-        <h1>Md Amirul Hoda (পলাশ)</h1>
-        <p>AI Specialist | Prompt Engineer</p>
-    </section>
+    <!-- হ্যাকিং টার্মিনাল -->
+    <div id="terminal"></div>
+    <audio id="hackSound" src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg"></audio>
 
-    <div class="grid">
-        <a href="https://www.linkedin.com/in/mohammed-amirul-islam-720119401" class="card" target="_blank">
-            <i class="fab fa-linkedin"></i>
-            <h3>LinkedIn</h3>
-        </a>
-        <a href="https://www.upwork.com/freelancers/~012072c3d002cb852a" class="card" target="_blank">
-            <i class="fab fa-upwork"></i>
-            <h3>Upwork</h3>
-        </a>
-        <a href="https://www.fiverr.com/s/ljqoXVQ" class="card" target="_blank">
-            <i class="fab fa-fiverr"></i>
-            <h3>Fiverr</h3>
-        </a>
-        <a href="https://x.com/mdamirulhoda" class="card" target="_blank">
-            <i class="fab fa-twitter"></i>
-            <h3>X (Twitter)</h3>
-        </a>
+    <!-- মূল পোর্টফোলিও (শুরুতে লুকানো থাকবে) -->
+    <div id="portfolio" class="hidden">
+        <section class="hero">
+            <h1>Md Amirul Hoda (পলাশ)</h1>
+            <p>AI Specialist | Prompt Engineer</p>
+        </section>
+        <div class="grid">
+            <a href="https://www.linkedin.com/in/mohammed-amirul-islam-720119401" class="card"><i class="fab fa-linkedin"></i> <h3>LinkedIn</h3></a>
+            <a href="https://www.upwork.com/freelancers/~012072c3d002cb852a" class="card"><i class="fab fa-upwork"></i> <h3>Upwork</h3></a>
+            <a href="https://www.fiverr.com/s/ljqoXVQ" class="card"><i class="fab fa-fiverr"></i> <h3>Fiverr</h3></a>
+        </div>
     </div>
+
+    <script>
+        const text = ["Initializing System...", "Accessing Neural Network...", "Decrypting Protocols...", "Welcome: Md Amirul Hoda (পলাশ)", "System Ready."];
+        let i = 0;
+        const terminal = document.getElementById('terminal');
+        const audio = document.getElementById('hackSound');
+
+        function startHack() {
+            if (i < text.length) {
+                terminal.innerHTML += text[i] + "<br>";
+                audio.play().catch(e => console.log("Click required"));
+                i++;
+                setTimeout(startHack, 1000);
+            } else {
+                terminal.style.display = 'none';
+                document.getElementById('portfolio').classList.remove('hidden');
+            }
+        }
+        // ইউজার একবার ক্লিক করলেই হ্যাকিং শুরু হবে (ব্রাউজার পলিসির জন্য)
+        document.body.onclick = () => { startHack(); document.body.onclick = null; };
+    </script>
 </body>
 </html>
