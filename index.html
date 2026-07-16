@@ -10,21 +10,21 @@ body { margin: 0; background: #000; color: #0f0; font-family: 'Courier New', mon
 #matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.2; }
 #overlay { position: relative; z-index: 1; padding: 20px; display: none; }
 
-.welcome-header { font-size: 1.5rem; color: #fff; margin-top: 10px; }
-/* নাম নিভে-জলে ইফেক্ট */
-.name-highlight { font-size: 2.5rem; color: #0f0; margin-bottom: 20px; animation: blinker 2s linear infinite; }
-@keyframes blinker { 50% { opacity: 0.3; text-shadow: none; } }
+.welcome-header { font-size: 2rem; color: #fff; margin-top: 20px; text-transform: uppercase; }
+/* গোল্ডেন ব্লিঙ্ক ইফেক্ট */
+.name-highlight { font-size: 3rem; color: #FFD700; text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700; margin-bottom: 20px; animation: blink 1.5s infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
-.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; max-width: 800px; margin: 10px auto; }
-.card { border: 1px solid #0f0; padding: 8px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.8); font-size: 0.7rem; }
-.card:hover { background: #0f0; color: #000; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; }
+.card { border: 2px solid #0f0; padding: 10px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.7); transition: 0.3s; font-size: 0.7rem; }
+.card:hover { background: #0f0; color: #000; box-shadow: 0 0 15px #0f0; font-weight: bold; }
 
-.skills-container { max-width: 400px; margin: 15px auto; text-align: left; }
-.skill-bar { margin-bottom: 8px; font-size: 0.8rem; color: #fff; }
-.progress-wrapper { display: flex; align-items: center; gap: 5px; }
-.progress-bg { background: #111; height: 10px; width: 100%; border: 1px solid #0f0; }
-.progress-fill { background: #0f0; height: 100%; }
-.percent-text { width: 35px; font-size: 0.8rem; color: #0f0; }
+.skills-container { max-width: 500px; margin: 20px auto; text-align: left; }
+.skill-bar { margin-bottom: 12px; color: #fff; }
+.progress-wrapper { display: flex; align-items: center; gap: 10px; }
+.progress-bg { background: #111; height: 12px; width: 100%; border: 1px solid #0f0; }
+.progress-fill { background: #0f0; height: 100%; box-shadow: 0 0 10px #0f0; }
+.percent-text { width: 40px; color: #0f0; }
 </style>
 </head>
 <body>
@@ -32,40 +32,44 @@ body { margin: 0; background: #000; color: #0f0; font-family: 'Courier New', mon
 <div id="bg-img"></div>
 <canvas id="matrix-canvas"></canvas>
 
-<!-- স্টার্ট ইন্টারফেস -->
 <div id="startOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-    <h1 id="typewriter" style="color:#0f0; font-size: 1.5rem;"></h1>
-    <button onclick="start()" style="background:#0f0; border:none; padding:15px 30px; cursor:pointer; font-weight:bold;">ACCESS TERMINAL</button>
+<h1 id="typewriter" style="color:#0f0;"></h1>
+<input type="text" id="userName" placeholder="ENTER YOUR NAME" style="background:transparent; border:1px solid #0f0; color:#0f0; padding:10px; text-align:center;">
+<button onclick="start()" style="margin-top:20px; background:#0f0; border:none; padding:10px 20px; cursor:pointer;">ACCESS TERMINAL</button>
 </div>
 
 <div id="overlay">
-    <div class="welcome-header">WELCOME</div>
-    <div class="name-highlight">Md Amirul Hoda {পলাশ}</div>
+<div class="welcome-header">WELCOME</div>
+<div class="name-highlight">Md Amirul Hoda {পলাশ}</div>
 
-    <div class="grid">
-        <a href="#" class="card">LinkedIn</a><a href="#" class="card">Upwork</a><a href="#" class="card">Fiverr</a><a href="#" class="card">Twitter</a>
-        <a href="#" class="card">Net Scan</a><a href="#" class="card">Pass Gen</a><a href="#" class="card">IP Track</a><a href="#" class="card">Proxy</a>
-        <a href="#" class="card">Exploit</a><a href="#" class="card">Firewall</a><a href="#" class="card">Hash</a><a href="#" class="card">Encrypt</a>
-        <a href="#" class="card">DNS</a><a href="#" class="card">Phish</a><a href="#" class="card">DDoS</a><a href="#" class="card">SQL</a>
-    </div>
-
-    <div class="skills-container">
-        <div class="skill-bar">Python <div class="progress-wrapper"><div class="progress-bg"><div class="progress-fill" style="width:98%"></div></div><span class="percent-text">98%</span></div></div>
-        <div class="skill-bar">JavaScript <div class="progress-wrapper"><div class="progress-bg"><div class="progress-fill" style="width:90%"></div></div><span class="percent-text">90%</span></div></div>
-        <div class="skill-bar">Linux <div class="progress-wrapper"><div class="progress-bg"><div class="progress-fill" style="width:95%"></div></div><span class="percent-text">95%</span></div></div>
-    </div>
+<div class="grid">
+    <a href="#" class="card"><i class="fab fa-linkedin"></i><br>LinkedIn</a>
+    <a href="#" class="card"><i class="fab fa-upwork"></i><br>Upwork</a>
+    <a href="#" class="card"><i class="fab fa-fiverr"></i><br>Fiverr</a>
+    <a href="#" class="card"><i class="fab fa-twitter"></i><br>Twitter</a>
+    <a href="#" class="card">📡 Net Scan</a><a href="#" class="card">🔐 Pass Gen</a><a href="#" class="card">🕵️ IP Track</a><a href="#" class="card">💻 Proxy</a>
+    <a href="#" class="card">🛠️ Exploit</a><a href="#" class="card">🛡️ Firewall</a><a href="#" class="card">🧬 Hash</a><a href="#" class="card">📂 Encrypt</a>
 </div>
 
-<!-- সাউন্ড ফাইল -->
+<div class="skills-container">
+    <div class="skill-bar">Python <div class="progress-wrapper"><div class="progress-bg"><div class="progress-fill" style="width:98%"></div></div><span class="percent-text">98%</span></div></div>
+    <div class="skill-bar">JavaScript <div class="progress-wrapper"><div class="progress-bg"><div class="progress-fill" style="width:90%"></div></div><span class="percent-text">90%</span></div></div>
+    <div class="skill-bar">Linux <div class="progress-wrapper"><div class="progress-bg"><div class="progress-fill" style="width:95%"></div></div><span class="percent-text">95%</span></div></div>
+</div>
+</div>
+
+<!-- অডিও ফাইল (ফাইলের নাম তোমার অডিও ফাইলের নামের সাথে মিলিয়ে নাও) -->
 <audio id="hackerAudio" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    <source src="hacker-sound.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 function start() {
-    document.getElementById('startOverlay').style.display = 'none';
-    document.getElementById('overlay').style.display = 'block';
-    document.getElementById('hackerAudio').play(); // বাটন চাপলে গান বাজবে
+    if(document.getElementById('userName').value.trim() !== "") {
+        document.getElementById('startOverlay').style.display = 'none';
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('hackerAudio').play();
+    }
 }
 // ম্যাট্রিক্স কোড আগের মতই থাকবে...
 </script>
