@@ -6,24 +6,25 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 body { margin: 0; background: #000; color: #0f0; font-family: 'Courier New', monospace; text-align: center; overflow-x: hidden; }
-#bg-img { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('My Photo JPG.png') no-repeat center center fixed; background-size: cover; opacity: 0.7; z-index: -1; }
-#matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.2; }
+#bg-img { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('My Photo JPG.png') no-repeat center center fixed; background-size: cover; opacity: 0.4; z-index: -1; }
+#matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.3; }
 #overlay { position: relative; z-index: 1; padding: 20px; display: none; }
 
-.welcome-header { font-size: 2rem; color: #fff; margin-top: 20px; text-transform: uppercase; }
-.name-highlight { font-size: 3rem; color: #FFD700; text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700; margin-bottom: 20px; animation: blink 1.5s infinite; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.welcome-header { font-size: 2rem; color: #fff; margin-top: 20px; text-transform: uppercase; letter-spacing: 2px; }
+.name-highlight { font-size: 3.5rem; color: #0f0; text-shadow: 0 0 15px #0f0, 0 0 30px #0f0; margin-bottom: 20px; }
+
+.as-badge { position: absolute; top: 15px; right: 25px; font-size: 2rem; color: #0f0; border: 2px solid #0f0; padding: 5px 15px; background: rgba(0,0,0,0.5); }
 
 .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; }
-.card { border: 2px solid #0f0; padding: 10px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.7); transition: 0.3s; font-size: 0.7rem; }
-.card:hover { background: #0f0; color: #000; box-shadow: 0 0 15px #0f0; font-weight: bold; }
+.card { border: 2px solid #0f0; padding: 10px; color: #0f0; text-decoration: none; background: rgba(0,0,0,0.6); transition: 0.3s; font-size: 0.8rem; }
+.card:hover { background: #0f0; color: #000; box-shadow: 0 0 15px #0f0; }
 
 .skills-container { max-width: 500px; margin: 20px auto; text-align: left; }
-.skill-bar { margin-bottom: 12px; color: #fff; }
-.progress-wrapper { display: flex; align-items: center; gap: 10px; }
-.progress-bg { background: #111; height: 12px; width: 100%; border: 1px solid #0f0; }
-.progress-fill { background: #0f0; height: 100%; box-shadow: 0 0 10px #0f0; }
-.percent-text { width: 40px; color: #0f0; }
+.skill-bar { margin-bottom: 10px; font-size: 0.9rem; }
+.progress-bg { background: #222; height: 8px; border: 1px solid #0f0; }
+.progress-fill { background: #0f0; height: 100%; }
+
+.footer-status { position: fixed; bottom: 10px; left: 10px; font-size: 0.8rem; color: #0f0; text-shadow: 0 0 5px #0f0; }
 </style>
 </head>
 <body>
@@ -31,42 +32,56 @@ body { margin: 0; background: #000; color: #0f0; font-family: 'Courier New', mon
 <div id="bg-img"></div>
 <canvas id="matrix-canvas"></canvas>
 
+<!-- স্টার্ট ইন্টারফেস -->
 <div id="startOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:999; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-<h1 id="typewriter" style="color:#0f0;"></h1>
-<input type="text" id="userName" placeholder="ENTER YOUR NAME" style="background:transparent; border:1px solid #0f0; color:#0f0; padding:10px; text-align:center;">
+<h1 id="typewriter" style="color:#0f0; font-size: 2rem; min-height: 2em;"></h1>
+<input type="text" id="userName" placeholder="ENTER YOUR NAME" style="background:transparent; border:1px solid #0f0; color:#0f0; padding:10px; text-align:center; width:250px;">
 <button onclick="start()" style="margin-top:20px; background:#0f0; border:none; padding:10px 20px; cursor:pointer; font-weight:bold;">ACCESS TERMINAL</button>
 </div>
 
 <div id="overlay">
+<div class="as-badge">A § S</div>
 <div class="welcome-header">WELCOME</div>
 <div class="name-highlight">Md Amirul Hoda {পলাশ}</div>
 
 <div class="grid">
-    <a href="#" class="card"><i class="fab fa-linkedin"></i><br>LinkedIn</a>
-    <a href="#" class="card"><i class="fab fa-upwork"></i><br>Upwork</a>
-    <a href="#" class="card"><i class="fab fa-fiverr"></i><br>Fiverr</a>
-    <a href="#" class="card"><i class="fab fa-twitter"></i><br>Twitter</a>
-    <a href="#" class="card">📡 Net Scan</a><a href="#" class="card">🔐 Pass Gen</a><a href="#" class="card">🕵️ IP Track</a><a href="#" class="card">💻 Proxy</a>
-    <a href="#" class="card">🛠️ Exploit</a><a href="#" class="card">🛡️ Firewall</a><a href="#" class="card">🧬 Hash</a><a href="#" class="card">📂 Encrypt</a>
+<a href="https://www.linkedin.com/in/mohammed-amirul-islam-720119401" class="card"><i class="fab fa-linkedin"></i><br>LinkedIn</a>
+<a href="https://www.upwork.com/freelancers/~012072c3d002cb852a" class="card"><i class="fab fa-upwork"></i><br>Upwork</a>
+<a href="https://www.fiverr.com/s/ljqoXVQ" class="card"><i class="fab fa-fiverr"></i><br>Fiverr</a>
+<a href="https://x.com/mdamirulhoda" class="card"><i class="fab fa-twitter"></i><br>Twitter</a>
+<a href="#" class="card">📡 Net Scan</a><a href="#" class="card">🔐 Pass Gen</a><a href="#" class="card">🕵️ IP Track</a>
+<a href="#" class="card">💻 Proxy</a><a href="#" class="card">🛠️ Exploit</a><a href="#" class="card">🛡️ Firewall</a>
+<a href="#" class="card">🧬 Hash</a><a href="#" class="card">📂 Encrypt</a><a href="#" class="card">🌐 DNS</a>
+<a href="#" class="card">📱 Phish</a><a href="#" class="card">⚡ DDoS</a><a href="#" class="card">📁 SQL</a>
+<a href="#" class="card">🖥️ SSH</a><a href="#" class="card">🔍 Port</a><a href="#" class="card">🔑 SSL</a>
+<a href="#" class="card">🎭 Spoof</a><a href="#" class="card">📡 Wi-Fi</a><a href="#" class="card">🖱️ Keylog</a>
+<a href="#" class="card">🛰️ Geo</a><a href="#" class="card">📉 Packet</a><a href="#" class="card">🛡️ Anti</a>
+<a href="#" class="card">💻 VM</a><a href="#" class="card">⚡ Malware</a><a href="#" class="card">🔍 Audit</a>
+<a href="#" class="card">📁 Backdoor</a>
 </div>
 
 <div class="skills-container">
-    <div class="skill-bar">Python <div class="progress-wrapper"><div class="progress-bg"><div class="progress-fill" style="width:98%"></div></div><span class="percent-text">98%</span></div></div>
-    <div class="skill-bar">JavaScript <div class="progress-wrapper"><div class="progress-bg"><div class="progress-fill" style="width:90%"></div></div><span class="percent-text">90%</span></div></div>
-    <div class="skill-bar">Linux <div class="progress-wrapper"><div class="progress-bg"><div class="progress-fill" style="width:95%"></div></div><span class="percent-text">95%</span></div></div>
-</div>
+<div class="skill-bar">Python <div class="progress-bg"><div class="progress-fill" style="width:95%"></div></div></div>
+<div class="skill-bar">JavaScript <div class="progress-bg"><div class="progress-fill" style="width:90%"></div></div></div>
+<div class="skill-bar">Linux <div class="progress-bg"><div class="progress-fill" style="width:95%"></div></div></div>
+<div class="skill-bar">Ethical Hacking <div class="progress-bg"><div class="progress-fill" style="width:85%"></div></div></div>
+<div class="skill-bar">AI <div class="progress-bg"><div class="progress-fill" style="width:90%"></div></div></div>
 </div>
 
-<!-- অডিও ফাইলটি এখানে সেট করা হয়েছে -->
+<div class="footer-status">> System: ONLINE | Security: MAXIMUM | © 2026 Md Amirul</div>
+</div>
+
 <audio id="hackerAudio" loop>
-    <source src="binary-code.mp3" type="audio/mpeg">
+<source src="Binary Code - Interface Sound Effects _ Sci-Fi Computer Beeps _ Data Processing Sounds(MP3_70K).mp3" type="audio/mpeg">
 </audio>
 
 <script>
+// টাইপিং অ্যানিমেশন
 const text = "ACCESSING SECURE TERMINAL..."; let i = 0;
 function type() { if (i < text.length) { document.getElementById("typewriter").innerHTML += text.charAt(i); i++; setTimeout(type, 100); } }
 type();
 
+// ম্যাট্রিক্স রেইন
 const canvas = document.getElementById('matrix-canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth; canvas.height = window.innerHeight;
@@ -75,21 +90,16 @@ const drops = Array(Math.floor(canvas.width/fontSize)).fill(1);
 function draw() {
 ctx.fillStyle = "rgba(0,0,0,0.05)"; ctx.fillRect(0,0,canvas.width,canvas.height);
 ctx.fillStyle = "#0f0"; ctx.font = fontSize + "px monospace";
-drops.map((y, index) => { 
-    const t = matrix[Math.floor(Math.random()*matrix.length)];
-    ctx.fillText(t, index*fontSize, y*fontSize); 
-    if(y*fontSize > canvas.height && Math.random() > 0.975) drops[index] = 0;
-    drops[index]++;
-});
+drops.map((y, index) => { ctx.fillText(matrix[Math.floor(Math.random()*matrix.length)], indexfontSize, yfontSize); drops[index] = y*fontSize > canvas.height ? 0 : y+1; });
 }
 setInterval(draw, 50);
 
 function start() {
-    if(document.getElementById('userName').value.trim() !== "") {
-        document.getElementById('startOverlay').style.display = 'none';
-        document.getElementById('overlay').style.display = 'block';
-        document.getElementById('hackerAudio').play(); // অডিও প্লে হবে
-    }
+if(document.getElementById('userName').value.trim() !== "") {
+document.getElementById('startOverlay').style.display = 'none';
+document.getElementById('overlay').style.display = 'block';
+document.getElementById('hackerAudio').play();
+}
 }
 </script>
 </body>
